@@ -1,0 +1,73 @@
+.gradient-custom {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow: hidden;
+    background: radial-gradient(50% 123.47% at 50% 50%, #00ff94 0%, #720059 100%),
+        linear-gradient(121.28deg, #669600 0%, #ff0000 100%),
+        linear-gradient(180deg, #0029ff 0%, #8fff00 100%),
+        radial-gradient(100% 164.72% at 100% 100%, #6100ff 0%, #00ff57 100%),
+        radial-gradient(100% 148.07% at 0% 0%, #fff500 0%, #51d500 100%);
+    background-blend-mode: screen, color-dodge, overlay, difference, normal;
+}
+
+
+
+.header-custom {
+    background: linear-gradient(90deg, #FF0AC8 0%, #FF73E0 25%, #B19CF4 50%, #477BFD 75%, #751AFC 100%);
+    background-blend-mode: screen;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+.form-outline {
+    display: flex;
+    align-items: center;
+}
+
+.form-outline input[type="text"] {
+    flex: 1;
+    margin: 5px;
+}
+
+.add-button {
+    margin-left: 10px;
+    /* Adjust this value as needed */
+}
+
+.custom-label {
+    color: #0000FF;
+    /* Change the color to your desired color */
+    font-weight: bold;
+    /* Add any other styles you want */
+}
+
+.completed {
+    text-decoration: line-through;
+    color: #888;
+    /* Optionally, change the color for completed tasks */
+}
+
+/* Updated styles for the header */
+.nav-link.btn.btn-danger {
+    background-color: red;
+    /* Change the background color to red */
+    color: white;
+    /* Change the text color to white */
+}
+
+.nav-link.m-0 {
+    font-weight: bold;
+    /* Make the username text bold */
+}
+
+.max-height-card {
+    margin-top: 10px;
+    max-height: 85vh;
+    /* Adjust the value as needed */
+    overflow-y: auto;
+    /* Enable vertical scrolling when content overflows */
+}

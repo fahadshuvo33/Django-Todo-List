@@ -1,0 +1,88 @@
+ body {
+     background: linear-gradient(180deg, #00ff94 0%, #720059 100%);
+ }
+
+ .container {
+     height: 100vh;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+ }
+
+ .card {
+     max-width: 800px;
+     /* Adjust the maximum width as needed */
+     min-width: 400px;
+     border-radius: 15px;
+ }
+
+ .card-title {
+     font-size: 2rem;
+     font-weight: bold;
+     color: #007bff;
+     text-align: center;
+ }
+
+ .card-body {
+     padding: 30px;
+ }
+
+
+ .card-header {
+     background-color: transparent;
+     border: none;
+     text-align: center;
+ }
+
+
+ .form-group {
+     margin-bottom: 20px;
+ }
+
+ .form-label {
+     font-weight: bold;
+     color: #348A79;
+     margin-left: 5px;
+ }
+
+ .form-control {
+     border-radius: 10px;
+ }
+
+ .login-button {
+     width: 100%;
+     padding: 10px;
+     border-radius: 10px;
+     background-color: #007bff;
+     color: #fff;
+     font-weight: bold;
+ }
+
+ .login-button:hover {
+     background-color: #0056b3;
+ }
+
+ .signup-link {
+     text-align: center;
+     color: #000000;
+     margin-top: 20px;
+ }
+
+ .signup-button {
+     width: 100%;
+     padding: 10px;
+     border-radius: 10px;
+     background-color: #007bff;
+     color: #fff;
+     font-weight: bold;
+ }
+
+ .signup-button:hover {
+     background-color: #0056b3;
+ }
+
+ .login-link {
+     text-align: center;
+     color: #000000;
+     margin-top: 20px;
+ }

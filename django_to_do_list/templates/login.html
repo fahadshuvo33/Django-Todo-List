@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Page Title</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Include Bootstrap JavaScript and Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" >
+</head>
+<body>
+
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <div class="card-header">
+                <h2 class="card-title">Login</h2>
+            </div>
+            <form method ='post'>
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="inputUsername" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="inputUsername" placeholder="Enter your username" name='username'>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="inputPassword" placeholder="Enter your password" name=password>
+                </div>
+                <button type="submit" class="login-button">Log In</button>
+            </form>
+            <p class="signup-link">Don't have an account? <a href="{% url 'register' %}">Sign Up</a></p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

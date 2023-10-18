@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Page Title</title>
+
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/home.css' %}" >
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Include Bootstrap JavaScript and Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+</head>
+<body>
+<header class="navbar navbar-expand-lg navbar-light header-custom fixed-top">
+    <div class="container">
+        <a class="navbar-brand mr-auto" href="{% url 'home' current_tab='all' %}">To-do List</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <!-- Display user name and logout button side by side -->
+                    <div class="d-flex align-items-center">
+                        <p class="nav-link m-0">{{ user.username }}</p>
+                        <a class="nav-link btn btn-danger ml-2" href="{% url 'logout' %}">Logout</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>
+    
+<section class="vh-100 gradient-custom">
+    <div class="container py-5 vh-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col col-xl-10">
+                <div class="card max-height-card">
+                    <div class="card-body p-5">
+                        <form method='post' class="mb-4" action = "{% url 'add_task' %}">
+                            {% csrf_token %}
+                                <div class="form-outline">
+                                    <label class="custom-label" for="form2">New task</label>
+                                    <input type="text" id="form2" class="form-control" name='task_name' />
+                                    <button type="submit" class="btn btn-info ms-2 add-button">Add</button>
+                                </div>
+                                
+                            </form>
+
+
+                        <!-- Tabs navs -->
+                        <ul class="nav nav-tabs mb-4 pb-2" id="ex1" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link {% if current_tab == 'all' %}active{% endif %}"
+                                   href="{% url 'home' current_tab='all' %}">All</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link {% if current_tab == 'active' %}active{% endif %}"
+                                   href="{% url 'home' current_tab='active' %}">Active</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link {% if current_tab == 'completed' %}active{% endif %}"
+                                   href="{% url 'home' current_tab='completed' %}">Completed</a>
+                            </li>
+                        </ul>
+
+
+                        <!-- Tabs content -->
+                        <ul class="list-group mb-4 pb-2">
+                            {% for task in tasks %}
+                            <li class="list-group-item border-0 mb-2 rounded" style="background-color: #f4f6f7;">
+                                <div class="d-flex align-items-center justify-content-between ml-3">
+                                    <div>
+                                        <form method="post" action="{% url 'complete_task' task.id %}">
+                                            {% csrf_token %}
+                                            <input class="form-check-input me-2" type="checkbox" value="1"
+                                                {% if task.is_completed %}checked{% endif %}
+                                                onchange="this.form.submit()" />
+                                        </form>
+                                        <p class="mb-0 ml-2 {% if task.is_completed %}completed{% else %}active{% endif %}">{{ task.task_name }}</p>
+                                    </div>
+                                    <form method="post" action="{% url 'delete_task' task.id %}">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn btn-danger">Remove</button>
+                                    </form>
+                                </div>
+                            </li>
+                            {% empty %}
+                            <li class="list-group-item">
+                                <div class="text-center">
+                                    <p>No tasks found in this tab.</p>
+                                </div>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                        <!-- Tabs content -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>
