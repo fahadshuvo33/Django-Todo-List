@@ -67,7 +67,7 @@ def HomePage(request, current_tab):
     form = TaskForm()
     tasks = reversed(list(tasks))
 
-    return render(request, 'home.html', {'tasks': tasks, 'current_tab': current_tab, 'form' : form})
+    return render(request, 'index.html', {'tasks': tasks, 'current_tab': current_tab, 'form' : form})
 
 
 def add_task(request):
